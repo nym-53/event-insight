@@ -1,32 +1,23 @@
-# React + TypeScript + Vite
+# Event Insight 3.0
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+イベントで回収したアンケートの回答を入力・集計・可視化するWebアプリケーションです。
 
-Currently, two official plugins are available:
+## 開発背景
+紙アンケートではイベント終了後に集計する必要があり、開催中に回答傾向を把握できないという課題がありました。スマートフォンでの回答が難しい来場者に配慮して紙の回答方法を残しながら、運営側の集計・分析を効率化することを目的に制作しました。
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 主な機能
+- イベントの登録・管理
+- アンケートの質問作成
+- 回答の登録・編集・削除
+- 回答数・割合のグラフ表示
+- 2項目のクロス集計
+- CSV形式での回答データ出力
 
-## React Compiler
+## 使用技術
+- React
+- TypeScript
+- CSS
+- Vite
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
-```
-
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+## 開発状況
+プロトタイプとして開発中です。
