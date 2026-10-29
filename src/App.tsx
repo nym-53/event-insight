@@ -1,11 +1,45 @@
 
 import { useState } from 'react'
 import './App.css'
+import { demoEvent, demoQuestions, demoResponses } from './demoData'
 
 type Page = 'dashboard' | 'events' | 'survey' | 'responses'
 
 
 function App() {
+  const demoInitializedKey = 'eventInsightDemoInitialized'
+
+  if (localStorage.getItem(demoInitializedKey) === null) {
+    const eventsKey = 'eventInsightEvents'
+    const questionsKey = 'eventInsightQuestions'
+    const responsesKey = 'eventInsightResponses'
+
+    const hasExistingData = [
+      eventsKey,
+      questionsKey,
+      responsesKey,
+    ].some((key) => {
+      const value = localStorage.getItem(key)
+
+      if (value === null) return false
+
+      try {
+        const data = JSON.parse(value)
+        return Array.isArray(data) ? data.length > 0 : true
+      } catch {
+        return true
+      }
+    })
+
+    if (!hasExistingData) {
+      localStorage.setItem(eventsKey, JSON.stringify([demoEvent]))
+      localStorage.setItem(questionsKey, JSON.stringify(demoQuestions))
+      localStorage.setItem(responsesKey, JSON.stringify(demoResponses))
+    }
+
+    localStorage.setItem(demoInitializedKey, 'true')
+  }
+
   const [page, setPage] = useState<Page>('dashboard')
 
   type EventItem = {
